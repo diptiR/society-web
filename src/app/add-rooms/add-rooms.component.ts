@@ -15,14 +15,21 @@ export class AddRoomsComponent implements OnInit {
   wings = WINGS;
   floors = FLOORS;
   rooms = ROOMS;
+  ownerCtr = 1;
   selectedWing = this.wings[0].id; 
   selectedFloor = this.floors[0].id; 
   selectedRoom = this.rooms[0].id;
-  owners:ownerObj[] = [
-    {"id":"1", "name":undefined}
-  ]; 
+  owners = [""]; 
   owner: string;
   roomNumber; 
+
+  trackByFn(index, item) {
+    return item; 
+}
+
+  addCoOwner(){
+    this.owners.push("");
+  }
 
   generateRoomNumber(){
     this.roomNumber = this.selectedWing.toUpperCase() + "/" + this.selectedFloor + "0" + this.selectedRoom;

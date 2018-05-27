@@ -27,12 +27,12 @@
   </div>
   <div class="row form-group">
     <div class="col-lg-2">Name of the owner</div>
-    <div class="col-lg-10 row" ngFor = "owner in owners">
+    <div class="col-lg-10 row" ngFor = "owner in owners;let i = index;trackBy: trackByFn">
       <div class="col-lg-10">
-        <input class="form-control" type="text" />
+        <input [(ngModel)]="owner" class="form-control" type="text" />
       </div>
       <div class="col-lg-2">
-        <button type="button" class="btn btn-default btn-sm">
+        <button type="button" class="btn btn-default btn-sm" (click)="addCoOwner()">
           <span class="glyphicon glyphicon-plus"></span>
           Add Co-Owner
         </button>
