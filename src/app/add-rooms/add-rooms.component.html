@@ -1,0 +1,43 @@
+<div class="container-fluid">
+  <h2>Add Rooms Details</h2>
+
+  <div class="row form-group">
+    <div class="col-lg-2">
+      <label class="text-center">Room Number</label>
+      <div class="text-center">{{roomNumber}}</div>
+    </div>
+    <div class="col-lg-3">
+      <label>Select Wing</label>
+      <select #wing class="form-control" (change)="onWingChange(wing.value)">
+        <option value="{{wing.id}}" *ngFor="let wing of wings">{{wing.value}}</option>
+      </select>
+    </div>
+    <div class="col-lg-3">
+      <label>Select Floor</label>
+      <select #floor class="form-control" (change)="onFloorChange(floor.value)">
+        <option value="{{floor.id}}" *ngFor="let floor of floors">{{floor.value}}</option>
+      </select>
+    </div>
+    <div class="col-lg-3">
+      <label>Select Room</label>
+      <select #room class="form-control" (change)="onRoomChange(room.value)">
+        <option value="{{room.id}}" *ngFor="let room of rooms">{{room.value}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="row form-group">
+    <div class="col-lg-2">Name of the owner</div>
+    <div class="col-lg-10 row" ngFor = "owner in owners">
+      <div class="col-lg-10">
+        <input [(ngModel)]="owner" class="form-control" type="text" />
+      </div>
+      <div class="col-lg-2">
+        <button type="button" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-plus"></span>
+          Add Co-Owner
+        </button>
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+</div>

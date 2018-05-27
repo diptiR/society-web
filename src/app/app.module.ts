@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 import {AppRoutingModule} from './app.routing.module';
 import { AppComponent } from './app.component';
 import { OwnerComponent } from './owner/owner.component';
+import { AddRoomsComponent } from './add-rooms/add-rooms.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    OwnerComponent
+    OwnerComponent,
+    AddRoomsComponent
   ],
   imports: [
     BrowserModule,
