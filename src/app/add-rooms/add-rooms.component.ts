@@ -24,8 +24,12 @@ export class AddRoomsComponent implements OnInit {
   roomNumber; 
 
   trackByFn(index, item) {
-    return item; 
+    return index;
 }
+
+  deleteCoOwner(index){
+    this.owners.splice(index, 1);
+  }
 
   addCoOwner(){
     this.owners.push("");

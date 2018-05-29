@@ -25,18 +25,18 @@
       </select>
     </div>
   </div>
-  <div class="row form-group">
-    <div class="col-lg-2">Name of the owner</div>
-    <div class="col-lg-10 row" *ngFor = "let owner of owners;let i = index">
-      <div class="col-lg-10">
-        <input [(ngModel)]="owners[i]" class="form-control" type="text" />
-      </div>
-      <div class="col-lg-2">
-        <button type="button" class="btn btn-default btn-sm" (click)="addCoOwner()">
+  <div class="row form-group" *ngFor="let owner of owners;let i = index;trackBy:trackByFn">
+    <div class="col-lg-2"><div *ngIf = "i === 0">Name of the owner</div></div>
+    <div class="col-lg-8">
+      <input [(ngModel)]="owners[i]" class="form-control" type="text" />
+    </div>
+    <div class="col-lg-2">
+      <button type="button" class="btn btn-default btn-sm" (click)="addCoOwner()" *ngIf="i === owners.length-1">
           <span class="glyphicon glyphicon-plus"></span>
-          Add Co-Owner
         </button>
-      </div>
+      <button type="button" class="btn btn-default btn-sm" (click)="deleteCoOwner(i)" *ngIf="i !== owners.length-1">
+          <span class="glyphicon glyphicon-minus"></span>
+        </button>
     </div>
   </div>
   <button type="submit" class="btn btn-default">Submit</button>
