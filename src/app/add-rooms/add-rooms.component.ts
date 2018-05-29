@@ -1,9 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { WINGS, FLOORS, ROOMS } from '../common/rooms.component';
+import { WINGS, FLOORS, ROOMS, VEHICLETYPES } from '../common/rooms.component';
 
 interface ownerObj {
-  id:string;
+  id:number;
   name:string;
+}
+
+interface vehicleObj {
+  id:number;
+  type:string;
+  regNumber:string;  
 }
 
 @Component({
@@ -15,11 +21,14 @@ export class AddRoomsComponent implements OnInit {
   wings = WINGS;
   floors = FLOORS;
   rooms = ROOMS;
+  vehicleTypes = VEHICLETYPES;
   ownerCtr = 1;
+  vehicleCtr=1;
   selectedWing = this.wings[0].id; 
   selectedFloor = this.floors[0].id; 
   selectedRoom = this.rooms[0].id;
-  owners = [""]; 
+  owners:ownerObj[] = [{"id": 1, "name": undefined}]; 
+  vehicles:vehicleObj[] = [{"id": 1, "type": undefined, "regNumber": undefined}];
   owner: string;
   roomNumber; 
 
@@ -32,7 +41,17 @@ export class AddRoomsComponent implements OnInit {
   }
 
   addCoOwner(){
-    this.owners.push("");
+    this.ownerCtr = this.ownerCtr + 1;
+    this.owners.push({"id": this.ownerCtr, "name": undefined});
+  }
+
+  addVehicle(){
+    this.vehicleCtr = this.vehicleCtr + 1;
+    this.vehicles.push({"id": this.vehicleCtr, "type":undefined, "regNumber": undefined});
+  }
+
+  deleteVehicle(index){
+    this.vehicles.splice(index, 1);
   }
 
   generateRoomNumber(){

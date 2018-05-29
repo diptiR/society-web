@@ -13,6 +13,11 @@ interface roomObj {
   value:string;
 }
 
+interface vehicleObj {
+  id:string;
+  type:string;
+}
+
 export const WINGS:wingObj[] = [
     { id: "a", value: "A" },
     { id: "b", value: "B" },
@@ -36,4 +41,10 @@ export const WINGS:wingObj[] = [
     { id: "3", value: "3" },
     { id: "4", value: "4" },
     { id: "5", value: "5" }
-  ]
+  ];
+
+  export const VEHICLETYPES:vehicleObj[] = [
+    { id: "2w", type: "Two Wheeler" },
+    { id: "3w", type: "Three Wheeler" },
+    { id: "4w", type: "Four Wheeler" }
+  ];
