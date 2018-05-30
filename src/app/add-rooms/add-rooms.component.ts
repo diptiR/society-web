@@ -30,6 +30,8 @@ export class AddRoomsComponent implements OnInit {
   owners:ownerObj[] = [{"id": 1, "name": undefined}]; 
   vehicles:vehicleObj[] = [{"id": 1, "type": undefined, "regNumber": undefined}];
   owner: string;
+  rentOptValue: string = "no";
+  commercialOptValue: string = "no";
   roomNumber; 
 
   trackByFn(index, item) {

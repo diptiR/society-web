@@ -2,23 +2,23 @@
   <h2>Add Rooms Details</h2>
 
   <div class="row form-group">
-    <div class="col-lg-2">
+    <div class="col-lg-2 col-md-2 col-sm-2">
       <label class="text-center">Room Number</label>
       <div class="text-center">{{roomNumber}}</div>
     </div>
-    <div class="col-lg-3">
+    <div class="col-lg-3 col-md-2 col-sm-2">
       <label>Select Wing</label>
       <select #wing class="form-control" (change)="onWingChange(wing.value)">
         <option value="{{wing.id}}" *ngFor="let wing of wings">{{wing.value}}</option>
       </select>
     </div>
-    <div class="col-lg-3">
+    <div class="col-lg-3 col-md-2 col-sm-2">
       <label>Select Floor</label>
       <select #floor class="form-control" (change)="onFloorChange(floor.value)">
         <option value="{{floor.id}}" *ngFor="let floor of floors">{{floor.value}}</option>
       </select>
     </div>
-    <div class="col-lg-3">
+    <div class="col-lg-3 col-md-2 col-sm-2">
       <label>Select Room</label>
       <select #room class="form-control" (change)="onRoomChange(room.value)">
         <option value="{{room.id}}" *ngFor="let room of rooms">{{room.value}}</option>
@@ -27,13 +27,13 @@
   </div>
 
   <div class="row form-group" *ngFor="let owner of owners;let i = index;trackBy:trackByFn">
-    <div class="col-lg-2">
+    <div class="col-lg-2 col-md-2 col-sm-2">
       <div *ngIf="i === 0">Name of the owner</div>
     </div>
-    <div class="col-lg-8">
+    <div class="col-lg-8 col-md-8 col-sm-8">
       <input [(ngModel)]="owners[i].name" class="form-control" type="text" />
     </div>
-    <div class="col-lg-2">
+    <div class="col-lg-2 col-md-2 col-sm-2">
       <button type="button" class="btn btn-default btn-sm" (click)="addCoOwner()" *ngIf="i === owners.length-1">
         <span class="glyphicon glyphicon-plus"></span>
       </button>
@@ -43,19 +43,28 @@
     </div>
   </div>
 
+  <div class="row form-group">
+    <div class="col-lg-2 col-md-2 col-sm-2">
+      <div>Area (in sq. fts)</div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6">
+      <input type="text" [(ngModel)]="area" class="form-control" />
+    </div>
+  </div>
+
   <div class="row form-group" *ngFor="let vehicle of vehicles;let i = index;trackBy:trackByFn">
-    <div class="col-lg-2">
+    <div class="col-lg-2 col-md-2 col-sm-2">
       <div *ngIf="i === 0">Vehicles Registration Number</div>
     </div>
-    <div class="col-lg-2">
+    <div class="col-lg-2 col-md-2 col-sm-2">
       <select #vehicleType class="form-control" [(ngModel)]="vehicles[i].id">
         <option value="{{vehicleType.id}}" *ngFor="let vehicleType of vehicleTypes">{{vehicleType.type}}</option>
       </select>
     </div>
-    <div class="col-lg-6">
+    <div class="col-lg-6 col-md-6 col-sm-6">
       <input [(ngModel)]="vehicles[i].regNumber" class="form-control" type="text" />
     </div>
-    <div class="col-lg-2">
+    <div class="col-lg-2 col-md-2 col-sm-2">
       <button type="button" class="btn btn-default btn-sm" (click)="addVehicle()" *ngIf="i === vehicles.length-1">
         <span class="glyphicon glyphicon-plus"></span>
       </button>
@@ -66,24 +75,44 @@
   </div>
 
   <div class="row form-group">
-    <div class="col-lg-2">Rented</div>
+    <div class="col-lg-2 col-md-2 col-sm-2">Rented</div>
     <div class="col-lg-10">
-      <div class="col-lg-2">
+      <div class="col-lg-2 col-md-2 col-sm-2">
         <div class="radio">
           <label>
-            <input type="radio" name="optradio">YES
+            <input type="radio" [(ngModel)]="rentOptValue" value="yes" name="optradio">YES
           </label>
         </div>
       </div>
-      <div class="col-lg-2">
+      <div class="col-lg-2 col-md-2 col-sm-2">
         <div class="radio">
           <label>
-            <input type="radio" name="optradio">NO
+            <input type="radio" [(ngModel)]="rentOptValue" value="no" name="optradio">NO
           </label>
         </div>
       </div>
     </div>
   </div>
 
-  <button type="submit" class="btn btn-default">Submit</button>
+  <div class="row form-group">
+    <div class="col-lg-2 col-md-2 col-sm-2">Commercially Occupied</div>
+    <div class="col-lg-10 col-md-10 col-sm-10">
+      <div class="col-lg-2 col-md-2 col-sm-2">
+        <div class="radio">
+          <label>
+            <input type="radio" [(ngModel)]="commercialOptValue" value="yes" name="comradio">YES
+          </label>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-2 col-sm-2">
+        <div class="radio">
+          <label>
+            <input type="radio" [(ngModel)]="commercialOptValue" value="no" name="comradio">NO
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-default">Add</button>
 </div>
